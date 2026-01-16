@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tempo GM dApp - Send Messages on Tempo Testnet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div id="app">
+    <div class="background-glow"></div>
+    <div class="container">
+      <header>
+        <h1>👋 Tempo GM dApp</h1>
+        <p>Send "GM" messages on Tempo Testnet - Connect your wallet!</p>
+      </header>
+
+      <main class="glass-card">
+        <!-- Wallet Section -->
+        <div id="wallet-section">
+          <button id="connect-btn" class="primary-btn">Connect Wallet</button>
+          <div id="wallet-info" class="hidden">
+            <div class="info-grid">
+              <div class="info-item">
+                <span class="label">Address:</span>
+                <span id="account-display" class="value"></span>
+              </div>
+              <div class="info-item">
+                <span class="label">pathUSD Balance:</span>
+                <span id="balance-display" class="value">0.00</span>
+              </div>
+              <div class="info-item">
+                <span class="label">Gas Fund (AlphaUSD):</span>
+                <span id="alpha-balance-display" class="value">0.00</span>
+              </div>
+              <div class="info-item">
+                <span class="label">Network:</span>
+                <span class="value">Tempo Testnet</span>
+              </div>
+            </div>
+            <div class="contract-info">
+              <span class="label">Contract Address:</span>
+              <span id="contract-address" class="value mono">Loading...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Faucet Link -->
+        <div class="faucet-section">
+          <p>💡 <strong>Need Testnet Tokens?</strong></p>
+          <p>Get free testnet tokens from: <a href="https://faucet.tempo.xyz" target="_blank">Tempo Testnet Faucet</a>
+          </p>
+        </div>
+
+        <!-- Stats Section -->
+        <div id="stats-section" class="hidden">
+          <h3>📊 Additional Features</h3>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span class="stat-icon">⛽</span>
+              <span class="stat-label">Current Gas Price</span>
+              <span id="gas-price" class="stat-value">Loading...</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-icon">📝</span>
+              <span class="stat-label">Total Messages</span>
+              <span id="total-messages" class="stat-value">-</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-icon">👤</span>
+              <span class="stat-label">Your Messages</span>
+              <span id="user-messages" class="stat-value">-</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-icon">🔥</span>
+              <span class="stat-label">Your Streak</span>
+              <span id="streak-display" class="stat-value">-</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Send GM Section -->
+        <div id="action-section" class="hidden">
+          <div class="gm-controls">
+            <button id="send-gm-btn" class="gm-btn">Send Daily GM</button>
+            <p class="hint">Includes a native "GM!" memo</p>
+          </div>
+        </div>
+
+        <!-- Message History -->
+        <div id="message-history-section" class="hidden">
+          <h3>📜 Message History</h3>
+          <div class="table-container">
+            <table id="message-history-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Sender</th>
+                  <th>Message</th>
+                  <th>Time</th>
+                </tr>
+              </thead>
+              <tbody id="message-history-body">
+                <tr>
+                  <td colspan="4" class="empty-state">No messages yet</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Transaction History -->
+        <div id="transaction-history-section" class="hidden">
+          <h3>💸 Your Transaction History</h3>
+          <div class="table-container">
+            <table id="transaction-history-table">
+              <thead>
+                <tr>
+                  <th>Status</th>
+                  <th>Hash</th>
+                  <th>Time</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="transaction-history-body">
+                <tr>
+                  <td colspan="4" class="empty-state">No transactions yet</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Status Section -->
+        <div id="status-section">
+          <p id="status-msg"></p>
+          <div id="tx-link-container"></div>
+        </div>
+      </main>
+
+      <footer>
+        <p>Built for the Tempo Ecosystem | <a href="https://explore.tempo.xyz" target="_blank">📊 Explorer</a></p>
+      </footer>
+    </div>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
